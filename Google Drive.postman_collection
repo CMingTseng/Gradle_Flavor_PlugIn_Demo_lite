@@ -1,0 +1,199 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Google Drive Test",
+		"_postman_id": "7d61e9b3-e76c-e62d-cd0d-8443fa8a5716",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Image to Drive",
+			"request": {
+				"url": {
+					"raw": "https://www.googleapis.com/upload/drive/v3/files?uploadType=media",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"upload",
+						"drive",
+						"v3",
+						"files"
+					],
+					"query": [
+						{
+							"key": "uploadType",
+							"value": "media",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"description": "",
+						"key": "Content-Type",
+						"value": "image/jpeg"
+					},
+					{
+						"description": "",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer ya29.Glw-B4V1jTvzg8SLNaYpy2fyekOVIGw7vCP0jQoUFGoh-FKggDbKZeJJkTgM_uZI9t_GTnW3SrJgj896uYW4TE-c4dJN5kxck36eEur1el5R_gYEXH3gRTAZyyW7sw"
+					}
+				],
+				"body": {
+					"mode": "file",
+					"file": {
+						"src": ""
+					}
+				},
+				"description": "Upload image to google Drive via http request."
+			},
+			"response": []
+		},
+		{
+			"name": "POST JWT_Get_token",
+			"request": {
+				"url": "https://oauth2.googleapis.com/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "",
+						"value": "",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:jwt-bearer",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "assertion",
+							"value": "here put your JWT",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Upload image to google Drive via http request."
+			},
+			"response": []
+		},
+		{
+			"name": "GET uploaded Image",
+			"request": {
+				"url": {
+					"raw": "https://www.googleapis.com/drive/v3/files/1j632z0simYu0tmzll32HbXfSUFHMyEs6?alt=media",
+					"protocol": "https",
+					"host": [
+						"www",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"drive",
+						"v3",
+						"files",
+						"1j632z0simYu0tmzll32HbXfSUFHMyEs6"
+					],
+					"query": [
+						{
+							"key": "alt",
+							"value": "media",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "GET",
+				"header": [
+					{
+						"description": "",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer ya29.Glw-B4V1jTvzg8SLNaYpy2fyekOVIGw7vCP0jQoUFGoh-FKggDbKZeJJkTgM_uZI9t_GTnW3SrJgj896uYW4TE-c4dJN5kxck36eEur1el5R_gYEXH3gRTAZyyW7sw"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Move File on Drive",
+			"request": {
+				"url": "https://www.googleapis.com/drive/v2/files/1j632z0simYu0tmzll32HbXfSUFHMyEs6",
+				"method": "PUT",
+				"header": [
+					{
+						"description": "",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer ya29.Glw-B4V1jTvzg8SLNaYpy2fyekOVIGw7vCP0jQoUFGoh-FKggDbKZeJJkTgM_uZI9t_GTnW3SrJgj896uYW4TE-c4dJN5kxck36eEur1el5R_gYEXH3gRTAZyyW7sw"
+					},
+					{
+						"description": "",
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"parents\" : [{ \"id\": \"1JP8Bem2LvUtV0ByYR_7PBx_Kbu8PxFbU\" }]\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Rename file on Drive",
+			"request": {
+				"url": "https://www.googleapis.com/drive/v2/files/1j632z0simYu0tmzll32HbXfSUFHMyEs6",
+				"method": "PUT",
+				"header": [
+					{
+						"description": "",
+						"key": "Authorization",
+						"type": "text",
+						"value": "Bearer ya29.Glw-B4V1jTvzg8SLNaYpy2fyekOVIGw7vCP0jQoUFGoh-FKggDbKZeJJkTgM_uZI9t_GTnW3SrJgj896uYW4TE-c4dJN5kxck36eEur1el5R_gYEXH3gRTAZyyW7sw"
+					},
+					{
+						"description": "",
+						"key": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"title\" : \"holmer\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

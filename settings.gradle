@@ -1,0 +1,5 @@
+rootProject.name = 'ProductFlavors_BuildTypes_Plugin_Develop_Demo'
+include ':app'
+include ':app_no_flavor'
+include ':flavor_x86'
+include ':drive'

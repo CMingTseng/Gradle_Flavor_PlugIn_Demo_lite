@@ -1,0 +1,66 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'com.github.ximik3.drive'
+// https://developer.android.com/studio/publish/app-signing
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+    defaultConfig {
+        applicationId "com.zinc.com.zinc.flavordemo"
+        minSdkVersion 19
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    signingConfigs {
+        gradleStudy {
+            keyAlias keystoreProperties['keyAlias1']
+            keyPassword keystoreProperties['keyPassword1']
+            storeFile file(keystoreProperties['storeFile1'])
+            storePassword keystoreProperties['storePassword1']
+        }
+
+        xiaopenyou {
+            keyAlias keystoreProperties['keyAlias2']
+            keyPassword keystoreProperties['keyPassword2']
+            storeFile file(keystoreProperties['storeFile2'])
+            storePassword keystoreProperties['storePassword2']
+        }
+
+        jiangpengyong {
+            keyAlias keystoreProperties['keyAlias3']
+            keyPassword keystoreProperties['keyPassword3']
+            storeFile file(keystoreProperties['storeFile3'])
+            storePassword keystoreProperties['storePassword3']
+        }
+    }
+
+    buildTypes {
+        release {
+//            signingConfig signingConfigs.gradleStudy
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    deploy {
+        serviceAccountEmail = 'your-service-account-email'
+        pk12File = file('key.p12')
+        folderId = 'your-shared-folder-id'
+    }
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+}
